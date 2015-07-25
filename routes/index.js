@@ -42,13 +42,15 @@ router.get('/', function(req, res, next) {
   ctx.fillStyle = 'white';
 
   var fonts = '"DejaVu Sans Light" Helvetica Arial';
+  var pad = 0;
   if (initial > '\u2E7F') {
     fonts = '"WenQuanYi Zen Hei Sharp"';
+    pad = size * -0.1;
   }
 
   ctx.font = Math.ceil(size * 0.8) + 'px ' + fonts;
   var te = ctx.measureText(initial);
-  ctx.fillText(initial, (size - te.width) * 0.5, size * 0.8);
+  ctx.fillText(initial, (size - te.width) * 0.5, size * 0.8 + pad);
 
   res.setHeader('cache-control', 'public,max-age=300');
   res.setHeader('content-type', 'image/png');
