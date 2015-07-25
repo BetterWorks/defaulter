@@ -39,6 +39,7 @@ router.get('/', function(req, res, next) {
   ctx.fill();
 
   ctx = canvas.getContext('2d');
+  ctx.antialias = 'subpixel';
   ctx.fillStyle = 'white';
 
   var fonts = '"DejaVu Sans Light" Helvetica Arial';
