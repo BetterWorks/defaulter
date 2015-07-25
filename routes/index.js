@@ -48,9 +48,7 @@ router.get('/', function(req, res, next) {
 
   ctx.font = Math.ceil(size * 0.8) + 'px ' + fonts;
   var te = ctx.measureText(initial);
-  ctx.fillText(initial,
-    (size - te.width) * 0.5,
-    size * 0.8);
+  ctx.fillText(initial, (size - te.width) * 0.5, size * 0.8);
 
   res.setHeader('cache-control', 'public,max-age=300');
   res.setHeader('content-type', 'image/png');
