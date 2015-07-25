@@ -46,11 +46,11 @@ router.get('/', function(req, res, next) {
     fonts = '"WenQuanYi Zen Hei Sharp"';
   }
 
-  ctx.font = Math.ceil(size * 0.8) + '% ' + fonts;
+  ctx.font = Math.ceil(size * 0.8) + 'px ' + fonts;
   var te = ctx.measureText(initial);
   ctx.fillText(initial,
     (size - te.width) * 0.5,
-    (size - te.emHeightAscent) * 0.4 + te.emHeightAscent);
+    size * 0.8);
 
   res.setHeader('cache-control', 'public,max-age=300');
   res.setHeader('content-type', 'image/png');
