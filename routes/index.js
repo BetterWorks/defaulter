@@ -39,8 +39,6 @@ router.get('/', function(req, res, next) {
   ctx.fill();
 
   ctx = canvas.getContext('2d');
-  ctx.antialias = 'subpixel';
-  ctx.patternQuality = 'bilinear';
   ctx.fillStyle = 'white';
 
   var fonts = '"DejaVu Sans Light" Helvetica Arial';
@@ -48,10 +46,11 @@ router.get('/', function(req, res, next) {
     fonts = '"WenQuanYi Zen Hei Sharp"';
   }
 
-  var fontRatio = 0.7
-  ctx.font = Math.ceil(size * fontRatio) + '% ' + fonts;
+  ctx.font = Math.ceil(size * 0.8) + '% ' + fonts;
   var te = ctx.measureText(initial);
-  ctx.fillText(initial, Math.floor((size - te.width) * 0.5), size * fontRatio);
+  ctx.fillText(initial,
+    (size - te.width) * 0.5,
+    (size - te.emHeightAscent) * 0.4 + te.emHeightAscent);
 
   res.setHeader('cache-control', 'public,max-age=300');
   res.setHeader('content-type', 'image/png');
