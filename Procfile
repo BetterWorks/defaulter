@@ -1,1 +1,1 @@
-web: coffee index.js
+web: npm start
