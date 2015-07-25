@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
   ctx.rect(0, 0, size, size);
 
   var text = req.query.text || '?';
-  var initial = text[0].toUpperCase();
+  var initial = text[0].toUpperCase().trim();
 
   if (req.query.hex) {
     ctx.fillStyle = '#' + req.query.hex;
@@ -42,7 +42,7 @@ router.get('/', function(req, res, next) {
   ctx.fillStyle = 'white';
   ctx.font = Math.ceil(size * 0.8) + '% Helvetica Arial';
   var te = ctx.measureText(initial);
-  ctx.fillText(initial, (size - te.width) * 0.5, size * 0.8);
+  ctx.fillText(initial, Math.floor((size - te.width) * 0.5), size * 0.8);
 
   res.setHeader('cache-control', 'public,max-age=300');
   res.setHeader('content-type', 'image/png');
