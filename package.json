@@ -12,5 +12,8 @@
     "express-cluster": "0.0.x",
     "morgan": "1.6.x",
     "newrelic": "1.21.x"
+  },
+  "engines": {
+    "node": "0.12.x"
   }
 }
