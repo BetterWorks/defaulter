@@ -48,9 +48,10 @@ router.get('/', function(req, res, next) {
     fonts = '"WenQuanYi Zen Hei Sharp"';
   }
 
-  ctx.font = Math.ceil(size * 0.8) + '% ' + fonts;
+  var fontRatio = 0.7
+  ctx.font = Math.ceil(size * fontRatio) + '% ' + fonts;
   var te = ctx.measureText(initial);
-  ctx.fillText(initial, Math.floor((size - te.width) * 0.5), size * 0.8);
+  ctx.fillText(initial, Math.floor((size - te.width) * 0.5), size * fontRatio);
 
   res.setHeader('cache-control', 'public,max-age=300');
   res.setHeader('content-type', 'image/png');
