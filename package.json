@@ -1,0 +1,9 @@
+{
+  "name": "defaulter",
+  "version": "0.0.0",
+  "dependencies": {
+    "canvas": "1.2.x",
+    "coffee-script": "1.9.x",
+    "express": "4.13.x"
+  }
+}
