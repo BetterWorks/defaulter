@@ -1,9 +1,16 @@
 {
   "name": "defaulter",
   "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
   "dependencies": {
-    "canvas": "1.2.x",
-    "coffee-script": "1.9.x",
-    "express": "4.13.x"
+    "canvas": "1.1.x",
+    "debug": "2.2.x",
+    "express": "4.13.x",
+    "express-cluster": "0.0.x",
+    "morgan": "1.6.x",
+    "newrelic": "1.21.x"
   }
 }
