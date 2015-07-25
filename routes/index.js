@@ -13,7 +13,7 @@ COLORS = [
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var size = parseInt(req.query.size) || 200;
-  size = Math.max(Math.min(1000, +size), 20);
+  size = Math.max(Math.min(1000, +size), 1);
   var canvas = new Canvas(size, size);
   var ctx = canvas.getContext('2d');
   ctx.rect(0, 0, size, size);
