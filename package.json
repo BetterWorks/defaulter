@@ -10,7 +10,7 @@
     "debug": "2.2.x",
     "express": "4.13.x",
     "express-cluster": "0.0.x",
-    "handlebars": "3.0.x",
+    "express-hbs": "0.8.x",
     "morgan": "1.6.x",
     "newrelic": "1.21.x"
   },
