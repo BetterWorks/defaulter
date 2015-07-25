@@ -43,7 +43,7 @@ router.get('/', function(req, res, next) {
 
   var fonts = '"DejaVu Sans Light" Helvetica Arial';
   if (initial > '\u2E7F') {
-    fonts = '"Sazanami Mincho" UnDinaru "WenQuanYi Zen Hei"';
+    fonts = '"WenQuanYi Zen Hei Sharp"';
   }
 
   ctx.font = Math.ceil(size * 0.8) + '% ' + fonts;
