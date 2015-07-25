@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
 var Canvas = require('canvas');
 var crypto = require('crypto');
+var express = require('express');
 
-COLORS = [
+var router = express.Router();
+var COLORS = [
   '#1abc9c', '#16a085', '#f1c40f', '#f39c12', '#2ecc71', '#27ae60', '#e67e22', '#d35400', '#3498db',
   '#2980b9', '#e74c3c', '#c0392b', '#9b59b6', '#8e44ad', '#bdc3c7', '#34495e', '#2c3e50', '#95a5a6',
   '#7f8c8d', '#ec87bf', '#d870ad', '#f69785', '#9ba37e', '#b49255', '#b49255', '#a94136'
@@ -45,7 +45,7 @@ router.get('/', function(req, res, next) {
   var pad = 0;
   if (initial > '\u2E7F') {
     fonts = '"WenQuanYi Zen Hei Sharp"';
-    pad = size * -0.1;
+    pad = size * -0.05;
   }
 
   ctx.font = Math.ceil(size * 0.8) + 'px ' + fonts;
