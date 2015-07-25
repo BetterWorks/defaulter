@@ -40,7 +40,7 @@ router.get('/', function(req, res, next) {
 
   ctx = canvas.getContext('2d');
   ctx.fillStyle = 'white';
-  ctx.font = Math.ceil(size * 0.8) + '% Helvetica Arial';
+  ctx.font = Math.ceil(size * 0.8) + '% "DejaVu Sans Light" Helvetica Arial';
   var te = ctx.measureText(initial);
   ctx.fillText(initial, Math.floor((size - te.width) * 0.5), size * 0.8);
 
