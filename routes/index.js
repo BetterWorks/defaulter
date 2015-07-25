@@ -40,7 +40,8 @@ router.get('/', function(req, res, next) {
 
   ctx = canvas.getContext('2d');
   ctx.fillStyle = 'white';
-  ctx.font = Math.ceil(size * 0.8) + '% "DejaVu Sans Light" Helvetica Arial "WenQuanYi Zen Hei" UnDinaru "Sazanami Mincho"';
+  var fonts = '"WenQuanYi Zen Hei" "DejaVu Sans Light" Helvetica Arial UnDinaru "Sazanami Mincho"';
+  ctx.font = Math.ceil(size * 0.8) + '% ' + fonts;
   var te = ctx.measureText(initial);
   ctx.fillText(initial, Math.floor((size - te.width) * 0.5), size * 0.8);
 
