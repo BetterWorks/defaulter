@@ -1,14 +1,19 @@
 var Canvas = require('canvas');
 var crypto = require('crypto');
 var express = require('express');
+var path = require('path');
 
 var router = express.Router();
+
 var COLORS = [
-  '#1abc9c', '#16a085', '#f1c40f', '#f39c12', '#2ecc71', '#27ae60', '#e67e22', '#d35400', '#3498db',
-  '#2980b9', '#e74c3c', '#c0392b', '#9b59b6', '#8e44ad', '#bdc3c7', '#34495e', '#2c3e50', '#95a5a6',
-  '#7f8c8d', '#ec87bf', '#d870ad', '#f69785', '#9ba37e', '#b49255', '#b49255', '#a94136'
+ '#BFD2D7', '#88CBD8', '#57828B', '#1D89A0', '#1F7081', '#8DA6AE', '#6EA3AF', '#0F5564'
 ];
 
+function fontFile(name) {
+  return path.join(__dirname, '/../fonts/', name);
+}
+
+var districtFont = new Canvas.Font('District-Medium', fontFile('district-medium.woff'));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,6 +21,7 @@ router.get('/', function(req, res, next) {
   size = Math.max(Math.min(1000, +size), 1);
   var canvas = new Canvas(size, size);
   var ctx = canvas.getContext('2d');
+  ctx.addFont(districtFont);
   ctx.rect(0, 0, size, size);
 
   var text = req.query.text || '?';
@@ -41,7 +47,7 @@ router.get('/', function(req, res, next) {
   ctx = canvas.getContext('2d');
   ctx.fillStyle = 'white';
 
-  var fonts = '"DejaVu Sans Light" Helvetica Arial';
+  var fonts = 'District-Medium "DejaVu Sans Light" Helvetica Arial';
   var pad = 0;
   if (initial > '\u2E7F') {
     fonts = '"WenQuanYi Zen Hei Sharp"';
