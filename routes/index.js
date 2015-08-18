@@ -34,7 +34,7 @@ router.get('/', function(req, res, next) {
       var md5 = crypto.createHash('md5');
       md5.update(text);
       md5.update(req.query.seed);
-      choice = parseInt(md5.digest('hex'), 16) % COLORS.length;
+      choice = parseInt(md5.digest('hex').substr(0, 8), 16) % COLORS.length;
     } else {
       choice = Math.floor(Math.random() * COLORS.length);
     }
