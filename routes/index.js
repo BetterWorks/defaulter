@@ -9,11 +9,8 @@ var COLORS = [
  '#BFD2D7', '#88CBD8', '#57828B', '#1D89A0', '#1F7081', '#8DA6AE', '#6EA3AF', '#0F5564'
 ];
 
-function fontFile(name) {
-  return path.join(__dirname, '/../fonts/', name);
-}
-
-var districtFont = new Canvas.Font('District-Medium', fontFile('district-medium.woff'));
+var robotoPath = path.join(__dirname, '..', 'fonts', 'roboto-medium.woff');
+var districtFont = new Canvas.Font('Roboto-Medium', robotoPath);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -41,13 +38,10 @@ router.get('/', function(req, res, next) {
     ctx.fillStyle = COLORS[choice];
   }
 
-
   ctx.fill();
-
-  ctx = canvas.getContext('2d');
   ctx.fillStyle = 'white';
 
-  var fonts = 'District-Medium "DejaVu Sans Light" Helvetica Arial';
+  var fonts = 'Roboto-Medium "DejaVu Sans Light" Helvetica Arial';
   if (text[0] > '\u2E7F') {
     // only use 1st character because of space limitations
     text = text[0];
