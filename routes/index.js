@@ -25,16 +25,16 @@ router.get('/', function(req, res, next) {
   ctx.rect(0, 0, size, size);
 
   var text = req.query.text || '?';
-  var initial = text[0].toUpperCase().trim();
+  text = text.trim().substr(0, 2).toUpperCase();
 
   if (req.query.hex) {
     ctx.fillStyle = '#' + req.query.hex;
   } else {
     if (req.query.seed) {
       var md5 = crypto.createHash('md5');
-      md5.update(initial);
+      md5.update(text);
       md5.update(req.query.seed);
-      choice = parseInt(md5.digest('hex'), 16) % COLORS.length;
+      choice = parseInt(md5.digest('hex').substr(0, 8), 16) % COLORS.length;
     } else {
       choice = Math.floor(Math.random() * COLORS.length);
     }
@@ -48,15 +48,19 @@ router.get('/', function(req, res, next) {
   ctx.fillStyle = 'white';
 
   var fonts = 'District-Medium "DejaVu Sans Light" Helvetica Arial';
-  var pad = 0;
-  if (initial > '\u2E7F') {
+  if (text[0] > '\u2E7F') {
+    // only use 1st character because of space limitations
+    text = text[0];
     fonts = '"WenQuanYi Zen Hei Sharp"';
-    pad = size * -0.05;
   }
 
-  ctx.font = Math.ceil(size * 0.8) + 'px ' + fonts;
-  var te = ctx.measureText(initial);
-  ctx.fillText(initial, (size - te.width) * 0.5, size * 0.8 + pad);
+  ctx.font = Math.ceil(size * 0.5) + 'px ' + fonts;
+  var textSize = ctx.measureText(text);
+
+  var xPos = (size - textSize.width) * 0.5;
+  var yPos = size * 0.667;
+
+  ctx.fillText(text, xPos, yPos);
 
   res.setHeader('cache-control', 'public,max-age=300');
   res.setHeader('content-type', 'image/png');
