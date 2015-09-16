@@ -1,0 +1,24 @@
+{
+  "name": "defaulter",
+  "description": "This app generates default profile images using people's initials.",
+  "website": "https://github.com/betterworks/defaulter",
+  "repository": "https://github.com/betterworks/defaulter",
+  "logo": "http://defaulter.betterworks.com/?text=DF&hex=78AB46&logo.png",
+  "success_url": "/",
+  "addons": [
+    "librato",
+    "newrelic",
+    "papertrail"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/debitoor/heroku-buildpack-converter-fonts.git"
+    },
+    {
+      "url": "https://github.com/mojodna/heroku-buildpack-cairo.git"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+    }
+  ]
+}

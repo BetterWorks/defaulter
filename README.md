@@ -3,6 +3,8 @@ default profile image generator using up to two initial characters from a text
 
 [https://defaulter.betterworks.com/?text=DF](https://defaulter.betterworks.com/?text=DF)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ![sample](https://defaulter.betterworks.com/?text=He&size=100&sample.png)
 ![sample](https://defaulter.betterworks.com/?text=LL&size=100&sample.png)
 ![sample](https://defaulter.betterworks.com/?text=O!&size=100&sample.png)
