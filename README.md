@@ -1,16 +1,14 @@
-# defaulter
+# defaulter [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 default profile image generator using up to two initial characters from a text
 
 [https://defaulter.betterworks.com/?text=DF](https://defaulter.betterworks.com/?text=DF)
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ![sample](https://defaulter.betterworks.com/?text=He&size=100&sample.png)
 ![sample](https://defaulter.betterworks.com/?text=LL&size=100&sample.png)
 ![sample](https://defaulter.betterworks.com/?text=O!&size=100&sample.png)
 ![sample](https://defaulter.betterworks.com/?text=猴&size=100&sample.png)
 
-### parameters
+#### parameters
 ```
 text        -> /?text=di
 size        -> /?size=500
@@ -21,18 +19,18 @@ mix & match -> /?text=di&size=600&seed=123
             -> /?text=猴&size=1024&hex=ffffe0
 ```
 
-### running locally on mac
+#### running locally on mac
 1. `sudo port install cairo`
 2. `npm start` or `node-dev bin/www`
 
-### custom font
+#### custom font
 Replace `fonts/font.woff` with a different web font file
 
-### heroku deployment
+#### heroku deployment
 1. enable the heroku multi buildpack
 2. push to heroku
 
-### performance
+#### performance
 ```
 Benchmarking defaulter.herokuapp.com (be patient).....done
 
@@ -75,7 +73,7 @@ Percentage of the requests served within a certain time (ms)
  100%     86 (longest request)
  ```
 
-### cloudflare
+#### cloudflare
 If you use cloudflare in front of defaulter and append `.png` in the url, the cdn will be able to cache the images.
 
 `https://defaulter.betterworks.com/?text=CF&size=100&hex=ffa500&cloudflare.png`
