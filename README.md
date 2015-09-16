@@ -72,3 +72,9 @@ Percentage of the requests served within a certain time (ms)
   99%     86
  100%     86 (longest request)
  ```
+
+### cloudflare
+If you use cloudflare in front of defaulter and append `.png` in the url, the cdn will be able to cache the images.
+
+`https://defaulter.betterworks.com/?text=CF&size=100&hex=ffa500&cloudflare.png`
+![cached](https://defaulter.betterworks.com/?text=CF&size=100&hex=ffa500&cloudflare.png)
