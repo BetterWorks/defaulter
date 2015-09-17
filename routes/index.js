@@ -5,6 +5,8 @@ var path = require('path');
 
 var router = express.Router();
 
+var numRequests = 0;
+
 var COLORS = [
  '#BFD2D7', '#88CBD8', '#57828B', '#1D89A0', '#1F7081', '#8DA6AE', '#6EA3AF', '#0F5564'
 ];
@@ -13,6 +15,8 @@ var fontPath = path.join(__dirname, '..', 'fonts', 'font.woff');
 var font = new Canvas.Font('CustomFont', fontPath);
 
 router.get('/', function(req, res, next) {
+  numRequests += 1;
+
   // use only the first two characters of the text
   var text = req.query.text || '?';
   text = text.trim().substr(0, 2).toUpperCase();
@@ -65,6 +69,13 @@ router.get('/', function(req, res, next) {
   res.setHeader('content-type', 'image/png');
 
   canvas.pngStream().pipe(res);
+
+  // restart process after 2000 requests to avoid leaking memory
+  if (numRequests >= 2000) {
+    setTimeout(function () {
+      process.exit();
+    });
+  }
 });
 
 module.exports = router;
