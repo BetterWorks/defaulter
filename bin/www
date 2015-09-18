@@ -15,11 +15,21 @@ var port = normalizePort(process.env.PORT || '3000');
 /**
  * Create HTTP server.
  */
-
 cluster(function(worker) {
   console.info('worker #' + worker.id + ' started on port ' + port);
   var app = require('../app');
-  return app.listen(port);
+  var server = app.listen(port);
+  var numRequests = 0;
+  var limit = 1000 + Math.round(Math.random() * 100);
+  server.on('request', function(req, res) {
+    numRequests += 1;
+    if (numRequests == limit) {
+      server.close(function() {
+        process.exit();
+      });
+    }
+  });
+  return server;
 }, {count: 2});
 
 /**
