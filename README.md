@@ -6,7 +6,7 @@ or
 [try it out live](https://defaulter.betterworks.com/?text=DF)
 
 ![sample](https://defaulter.betterworks.com/?text=He&size=100&sample.png)
-![sample](https://defaulter.betterworks.com/?text=LL&size=100&sample.png)
+![sample](https://defaulter.betterworks.com/?text=LL&size=100&border=true&sample.png)
 ![sample](https://defaulter.betterworks.com/?text=O!&size=100&sample.png)
 ![sample](https://defaulter.betterworks.com/?text=猴&size=100&sample.png)
 
@@ -16,6 +16,7 @@ text        -> /?text=di
 size        -> /?size=500
 color       -> /?hex=123456
 seed        -> /?seed=deterministic
+rounded     -> /?border=true
 
 mix & match -> /?text=di&size=600&seed=123
             -> /?text=猴&size=1024&hex=ffffe0
