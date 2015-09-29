@@ -1,3 +1,5 @@
+'use strict';
+
 var Canvas = require('canvas');
 var crypto = require('crypto');
 var express = require('express');
@@ -12,7 +14,7 @@ var COLORS = [
 var fontPath = path.join(__dirname, '..', 'fonts', 'font.woff');
 var font = new Canvas.Font('CustomFont', fontPath);
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   // use only the first two characters of the text
   var text = req.query.text || '?';
   text = text.trim().substr(0, 2).toUpperCase();
