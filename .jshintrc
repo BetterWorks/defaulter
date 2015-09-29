@@ -1,0 +1,19 @@
+{
+    "bitwise": true,
+    "curly": true,
+    "eqeqeq": true,
+    "freeze": true,
+    "futurehostile": true,
+    "maxcomplexity": 10,
+    "noarg": true,
+    "nocomma": true,
+    "nonbsp": true,
+    "nonew": true,
+    "notypeof": true,
+    "shadow": false,
+    "singleGroups": true,
+    "strict": true,
+    "undef": true,
+    "unused": true,
+    "node": true
+}
