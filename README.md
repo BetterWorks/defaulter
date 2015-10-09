@@ -26,6 +26,11 @@ mix & match -> /?text=di&size=600&seed=123
 1. `sudo port install cairo`
 2. `npm start` or `node-dev bin/www`
 
+#### running locally on linux (Debian)
+1. `sudo apt-get install libcairo2-dev libjpeg8-dev libgif-dev`
+2. `npm install`
+2. `node bin/www`
+
 #### custom font
 Replace `fonts/font.woff` with a different web font file
 
