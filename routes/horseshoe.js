@@ -37,7 +37,7 @@ router.get('/', function(req, res) {
   var size = parseInt(req.query.size) || 200;
   size = Math.max(Math.min(2048, +size), 1);
 
-  var progress = parseInt(req.query.progress);
+  var progress = parseInt(req.query.progress) || 0;
 
   var color = colors[req.query.color || 'green'];
 
