@@ -1,0 +1,25 @@
+{{#each sizes}}
+  <img src="/?text=AB&size={{this}}">
+  <img src="/?text=字&size={{this}}">
+  <img src="/?text=FFF&size={{this}}&hex=FF0000">
+{{/each}}
+<hr>
+{{#each sizes}}
+  <img src="/pie/?progress=33&color=yellow&size={{this}}">
+{{/each}}
+<hr>
+{{#each range}}
+  <img src="/pie/?progress={{this}}&size=40">
+  <img src="/pie/?progress={{this}}&color=red&size=40">
+  <img src="/pie/?progress={{this}}&color=yellow&size=40">
+{{/each}}
+<hr>
+{{#each sizes}}
+  <img src="/horseshoe/?progress=66&size={{this}}">
+{{/each}}
+<hr>
+{{#each range}}
+  <img src="/horseshoe/?progress={{this}}&size=40">
+  <img src="/horseshoe/?progress={{this}}&color=red&size=40">
+  <img src="/horseshoe/?progress={{this}}&color=yellow&size=40">
+{{/each}}
