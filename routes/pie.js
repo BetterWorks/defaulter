@@ -33,7 +33,7 @@ router.get('/', function(req, res) {
 
   var color = colors[req.query.color || 'green'];
 
-  var arcRadius = size * 0.5;
+  var arcRadius = (size - 1) * 0.5;
 
   var backgroundColor = 'rgba(0,0,0,0)';
 
