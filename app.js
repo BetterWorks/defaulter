@@ -17,6 +17,7 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use('/', require('./routes/index'));
 app.use('/horseshoe', require('./routes/horseshoe'));
+app.use('/pie', require('./routes/pie'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
