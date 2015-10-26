@@ -18,6 +18,7 @@ app.use(logger('dev'));
 app.use('/', require('./routes/index'));
 app.use('/horseshoe', require('./routes/horseshoe'));
 app.use('/pie', require('./routes/pie'));
+app.use('/circularize', require('./routes/circularize'));
 app.use('/test', require('./routes/test'));
 
 // catch 404 and forward to error handler
