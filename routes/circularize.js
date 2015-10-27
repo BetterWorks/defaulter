@@ -26,17 +26,18 @@ router.get('/', function(req, res) {
     var img = new Image();
 
     img.onload = function() {
-      var size = img.width;
-      var middle = Math.round((size - 1) * 0.5);
+      var middleX = Math.round((img.width - 1) * 0.5);
+      var middleY = Math.round((img.height - 1) * 0.5);
+      var radius = Math.min(middleX, middleY);
 
-      var canvas = new Canvas(size, size);
+      var canvas = new Canvas(img.width, img.height);
       var ctx = canvas.getContext('2d');
 
       ctx.drawImage(img, 0, 0, img.width, img.height);
 
       ctx.beginPath();
       ctx.lineWidth = 1;
-      ctx.arc(middle, middle, middle, 0, 2 * Math.PI, true);
+      ctx.arc(middleX, middleY, radius, 0, 2 * Math.PI, true);
       ctx.strokeStyle = 'rgb(255, 255, 255)';
       ctx.globalCompositeOperation = 'destination-in';
 
