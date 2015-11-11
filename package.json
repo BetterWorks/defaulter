@@ -10,9 +10,9 @@
     "canvas": "1.1.x",
     "express": "4.13.x",
     "express-cluster": "0.0.x",
-    "hbs": "3.1.x",
+    "hbs": "4.0.x",
     "morgan": "1.6.x",
-    "newrelic": "1.22.x",
+    "newrelic": "1.23.x",
     "request": "2.65.0"
   },
   "engines": {
