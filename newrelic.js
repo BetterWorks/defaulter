@@ -9,6 +9,7 @@ exports.config = {
    * Array of application names.
    */
   app_name: ['defaulter'],
+  capture_params: true,
   /**
    * Your New Relic license key.
    */
@@ -20,4 +21,4 @@ exports.config = {
      */
     level: 'info'
   }
-}
+};
