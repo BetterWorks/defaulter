@@ -23,8 +23,10 @@ cluster(function(worker) {
   var numRequests = 0;
   var limit = 1000 + Math.round(Math.random() * 100);
   server.on('request', function(req, res) {
+    var closing = false;
     numRequests += 1;
-    if (numRequests == limit) {
+    if (!closing && numRequests == limit) {
+      closing = true;
       server.close(function() {
         process.exit();
       });

@@ -12,7 +12,7 @@
     "express-cluster": "0.0.x",
     "hbs": "4.0.x",
     "morgan": "1.6.x",
-    "newrelic": "1.24.x",
+    "newrelic": "1.25.x",
     "request": "2.67.0"
   },
   "engines": {
