@@ -70,8 +70,8 @@ router.get('/', function(req, res) {
 
   // draw the containing circle
   if (haveBorder) {
-    var arcRadius = Math.round((size - strokeWidth) * 0.5);
-    var middle = Math.round(size * 0.5);
+    var arcRadius = Math.floor((size - strokeWidth) * 0.5);
+    var middle = Math.floor(size * 0.5);
     ctx.beginPath();
     ctx.lineWidth = strokeWidth;
     ctx.arc(middle, middle, arcRadius, 0, 2*Math.PI, true);
