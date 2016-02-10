@@ -46,13 +46,11 @@ router.get('/', function(req, res) {
   var progMainWidth = size * 0.1;
   var progMainRadius = size * 0.4;
 
-  var backgroundColor = 'rgba(0,0,0,0)';
-
   var canvas = new Canvas(size, size);
   var ctx = canvas.getContext('2d');
 
   // fill the background
-  ctx.fillStyle = backgroundColor;
+  ctx.fillStyle = 'rgba(0,0,0,0)';
   ctx.rect(0, 0, size, size);
   ctx.fill();
 

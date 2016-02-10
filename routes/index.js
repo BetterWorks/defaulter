@@ -64,9 +64,11 @@ router.get('/', function(req, res) {
   ctx.addFont(font);
 
   // fill the background
-  ctx.fillStyle = backgroundColor;
-  ctx.rect(0, 0, size, size);
-  ctx.fill();
+  if (!haveBorder) {
+    ctx.fillStyle = backgroundColor;
+    ctx.rect(0, 0, size, size);
+    ctx.fill();
+  }
 
   // draw the containing circle
   if (haveBorder) {

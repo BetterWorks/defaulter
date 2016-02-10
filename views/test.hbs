@@ -1,35 +1,37 @@
-{{#each sizes}}
-  <img src="/?text=AB&size={{this}}">
-  <img src="/?text=字&size={{this}}">
-  <img src="/?text=FFF&size={{this}}&hex=FF0000">
-{{/each}}
-<hr>
-{{#each sizes}}
-  <img src="/?text=AB&size={{this}}&border=true">
-  <img src="/?text=字&size={{this}}&border=true">
-  <img src="/?text=FFF&size={{this}}&hex=FF0000&border=true">
-{{/each}}
-<hr>
-{{#each sizes}}
-  <img src="/pie/?progress=33&color=yellow&size={{this}}">
-{{/each}}
-<hr>
-{{#each range}}
-  <img src="/pie/?progress={{this}}&size=40">
-  <img src="/pie/?progress={{this}}&color=red&size=40">
-  <img src="/pie/?progress={{this}}&color=yellow&size=40">
-{{/each}}
-<hr>
-{{#each sizes}}
-  <img src="/horseshoe/?progress=66&size={{this}}">
-{{/each}}
-<hr>
-{{#each range}}
-  <img src="/horseshoe/?progress={{this}}&size=40">
-  <img src="/horseshoe/?progress={{this}}&color=red&size=40">
-  <img src="/horseshoe/?progress={{this}}&color=yellow&size=40">
-{{/each}}
-<hr>
+<div style="background-color: #faebd7">
+  {{#each sizes}}
+    <img src="/?text=AB&size={{this}}">
+    <img src="/?text=字&size={{this}}">
+    <img src="/?text=FFF&size={{this}}&hex=FF0000">
+  {{/each}}
+  <hr>
+  {{#each sizes}}
+    <img src="/?text=AB&size={{this}}&border=true">
+    <img src="/?text=字&size={{this}}&border=true">
+    <img src="/?text=FFF&size={{this}}&hex=FF0000&border=true">
+  {{/each}}
+  <hr>
+  {{#each sizes}}
+    <img src="/pie/?progress=33&color=yellow&size={{this}}">
+  {{/each}}
+  <hr>
+  {{#each range}}
+    <img src="/pie/?progress={{this}}&size=40">
+    <img src="/pie/?progress={{this}}&color=red&size=40">
+    <img src="/pie/?progress={{this}}&color=yellow&size=40">
+  {{/each}}
+  <hr>
+  {{#each sizes}}
+    <img src="/horseshoe/?progress=66&size={{this}}">
+  {{/each}}
+  <hr>
+  {{#each range}}
+    <img src="/horseshoe/?progress={{this}}&size=40">
+    <img src="/horseshoe/?progress={{this}}&color=red&size=40">
+    <img src="/horseshoe/?progress={{this}}&color=yellow&size=40">
+  {{/each}}
+  <hr>
+</div>
 <div style="background-color: green;">
   <img height="200" src="/circularize/?src=http://igrudge.net/wp-content/uploads/2013/04/Crystal_Tux.png">
   <hr>

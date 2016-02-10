@@ -32,16 +32,13 @@ router.get('/', function(req, res) {
   var progress = parseInt(req.query.progress) || 0;
 
   var color = colors[req.query.color || 'green'];
-
   var arcRadius = (size - 1) * 0.5;
-
-  var backgroundColor = 'rgba(0,0,0,0)';
 
   var canvas = new Canvas(size, size);
   var ctx = canvas.getContext('2d');
 
   // fill the background
-  ctx.fillStyle = backgroundColor;
+  ctx.fillStyle = 'rgba(0,0,0,0)';
   ctx.rect(0, 0, size, size);
   ctx.fill();
 
