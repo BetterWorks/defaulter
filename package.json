@@ -16,6 +16,6 @@
     "request": "2.69.0"
   },
   "engines": {
-    "node": "0.12.x"
+    "node": "4.3.x"
   }
 }
