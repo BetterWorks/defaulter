@@ -13,7 +13,7 @@
     "hbs": "4.0.x",
     "morgan": "1.7.x",
     "newrelic": "1.26.x",
-    "request": "2.69.0"
+    "request": "2.70.0"
   },
   "engines": {
     "node": "0.12.x"
