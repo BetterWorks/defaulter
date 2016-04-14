@@ -13,9 +13,10 @@ router.get('/', function(req, res) {
     encoding: null,
     timeout: 2000,
     maxAttempts: 2,
-    retryDelay: 0
+    retryDelay: 0,
+    retryStrategy: request.RetryStrategies.HTTPOrNetworkError
   };
-  request.get(opts, function(err, response, body) {
+  request(opts, function(err, response, body) {
     if (err) {
       res.sendStatus(500);
       return;

@@ -13,7 +13,6 @@
     "hbs": "4.0.x",
     "morgan": "1.7.x",
     "newrelic": "1.26.x",
-    "request": "2.71.0",
     "requestretry": "1.6.x"
   },
   "engines": {
