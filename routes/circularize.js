@@ -2,14 +2,20 @@
 
 var Canvas = require('canvas');
 var express = require('express');
-var request = require('request');
+var request = require('requestretry');
 var Image = Canvas.Image;
 
 var router = express.Router();
 
 router.get('/', function(req, res) {
-
-  request.get({ url: req.query.src, encoding: null, timeout: 2000 }, function(err, response, body) {
+  var opts = {
+    url: req.query.src,
+    encoding: null,
+    timeout: 2000,
+    maxAttempts: 2,
+    retryDelay: 0
+  };
+  request.get(opts, function(err, response, body) {
     if (err) {
       res.sendStatus(500);
       return;
