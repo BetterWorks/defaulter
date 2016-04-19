@@ -16,24 +16,8 @@ var port = normalizePort(process.env.PORT || '3000');
  * Create HTTP server.
  */
 
-cluster(function(worker) {
-  console.info('worker #' + worker.id + ' started on port ' + port);
-  var app = require('../app');
-  var server = app.listen(port);
-  var numRequests = 0;
-  var limit = 1000 + Math.round(Math.random() * 100);
-  server.on('request', function(req, res) {
-    var closing = false;
-    numRequests += 1;
-    if (!closing && numRequests == limit) {
-      closing = true;
-      server.close(function() {
-        process.exit();
-      });
-    }
-  });
-  return server;
-}, {count: 2});
+console.info('server started on port ' + port);
+require('../app').listen(port);
 
 /**
  * Normalize a port into a number, string, or false.

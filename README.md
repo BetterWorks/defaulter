@@ -23,7 +23,7 @@ mix & match -> /?text=di&size=600&seed=123
 ```
 
 #### running locally on mac
-1. `sudo port install cairo`
+1. `sudo port install cairo giflib libpng`
 2. `npm start` or `node-dev bin/www`
 
 #### running locally on linux (Debian)
