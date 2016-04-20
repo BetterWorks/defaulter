@@ -1,12 +1,6 @@
 #!/usr/bin/env node
 
 /**
- * Module dependencies.
- */
-
-var cluster = require('express-cluster');
-
-/**
  * Get port from environment and store in Express.
  */
 
