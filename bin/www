@@ -1,6 +1,12 @@
 #!/usr/bin/env node
 
 /**
+ * Module dependencies.
+ */
+
+var cluster = require('express-cluster');
+
+/**
  * Get port from environment and store in Express.
  */
 
@@ -10,8 +16,23 @@ var port = normalizePort(process.env.PORT || '3000');
  * Create HTTP server.
  */
 
-console.info('server started on port ' + port);
-require('../app').listen(port);
+cluster(function(worker) {
+  console.info('worker #' + worker.id + ' started on port ' + port);
+  var app = require('../app');
+  var server = app.listen(port);
+  var numRequests = 0;
+  var closing = false;
+  server.on('request', function(req, res) {
+    numRequests += 1;
+    if (!closing && numRequests == 100) {
+      closing = true;
+      server.close(function() {
+        process.exit();
+      });
+    }
+  });
+  return server;
+}, {count: 1});
 
 /**
  * Normalize a port into a number, string, or false.
