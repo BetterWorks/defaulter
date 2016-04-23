@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+'use strict';
 
 /**
  * Module dependencies.
@@ -24,10 +25,12 @@ cluster(function(worker) {
   var closing = false;
   server.on('request', function(req, res) {
     numRequests += 1;
-    if (!closing && numRequests == 100) {
+    if (!closing && numRequests === 100) {
       closing = true;
-      server.close(function() {
-        process.exit();
+      setTimeout(function() {
+        server.close(function() {
+          process.exit();
+        });
       });
     }
   });
