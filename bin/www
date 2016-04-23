@@ -27,15 +27,13 @@ cluster(function(worker) {
     numRequests += 1;
     if (!closing && numRequests === 100) {
       closing = true;
-      setTimeout(function() {
-        server.close(function() {
-          process.exit();
-        });
+      server.close(function() {
+        process.exit();
       });
     }
   });
   return server;
-}, {count: 1});
+}, {count: 2});
 
 /**
  * Normalize a port into a number, string, or false.
