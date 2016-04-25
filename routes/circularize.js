@@ -50,8 +50,8 @@ router.get('/', function(req, res) {
 
       ctx.fill();
 
-      res.setHeader('cache-control', 'max-age=7200');
       res.setHeader('content-type', 'image/png');
+      res.setHeader('cache-control', 'max-age=86400');
 
       canvas.pngStream().pipe(res);
     };

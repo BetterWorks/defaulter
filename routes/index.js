@@ -90,8 +90,10 @@ router.get('/', function(req, res) {
   ctx.fillStyle = mainColor;
   ctx.fillText(text, xPos, yPos);
 
-  res.setHeader('cache-control', 'max-age=7200');
   res.setHeader('content-type', 'image/png');
+  if (req.query.seed) {
+    res.setHeader('cache-control', 'max-age=86400');
+  }
 
   canvas.pngStream().pipe(res);
 });

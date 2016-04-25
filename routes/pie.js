@@ -48,8 +48,8 @@ router.get('/', function(req, res) {
   renderProgress(ctx, middle, 'white', arcRadius * 0.9, 100);
   renderProgress(ctx, middle, color, arcRadius, progress);
 
-  res.setHeader('cache-control', 'max-age=7200');
   res.setHeader('content-type', 'image/png');
+  res.setHeader('cache-control', 'max-age=86400');
 
   canvas.pngStream().pipe(res);
 });
