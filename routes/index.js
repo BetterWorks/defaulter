@@ -78,6 +78,8 @@ router.get('/', function(req, res) {
     ctx.lineWidth = strokeWidth;
     ctx.arc(middle, middle, arcRadius, 0, 2*Math.PI, true);
     ctx.strokeStyle = mainColor;
+    ctx.fillStyle   = 'white';
+    ctx.fill();
     ctx.stroke();
   }
 
