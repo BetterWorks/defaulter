@@ -11,9 +11,6 @@ var COLORS = [
  '#BFD2D7', '#88CBD8', '#57828B', '#1D89A0', '#1F7081', '#8DA6AE', '#6EA3AF', '#0F5564'
 ];
 
-var fontPath = path.join(__dirname, '..', 'fonts', 'font.woff');
-var font = new Canvas.Font('CustomFont', fontPath);
-
 function getAccentColor(query, text) {
   if (query.hex) {
     // color is defined
@@ -35,7 +32,7 @@ router.get('/', function(req, res) {
   var text = req.query.text || '?';
   text = text.trim().substr(0, 2).toUpperCase();
 
-  var fonts = 'CustomFont';
+  var fonts = '"Proxima Nova"';
   if (text[0] > '\u2E7F') {
     // only use 1st character for CJK because of space limitations
     text = text[0];
@@ -61,7 +58,6 @@ router.get('/', function(req, res) {
 
   var canvas = new Canvas(size, size);
   var ctx = canvas.getContext('2d');
-  ctx.addFont(font);
 
   // fill the background
   if (!haveBorder) {
