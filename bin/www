@@ -29,12 +29,14 @@ cluster(function(worker) {
     if (!closing && numRequests === limit) {
       closing = true;
       server.close(function() {
-        process.exit();
+        process.nextTick(function() {
+          process.exit();
+        });
       });
     }
   });
   return server;
-}, {count: 4});
+}, {count: 4, verbose: true});
 
 /**
  * Normalize a port into a number, string, or false.
