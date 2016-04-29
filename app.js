@@ -14,6 +14,10 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+app.get('/favicon.ico', function(req, res) {
+  res.end();
+});
+
 app.use(logger('dev'));
 app.use('/', require('./routes/index'));
 app.use('/horseshoe', require('./routes/horseshoe'));
