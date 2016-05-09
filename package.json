@@ -12,10 +12,10 @@
     "express-cluster": "0.0.x",
     "hbs": "4.0.x",
     "morgan": "1.7.x",
-    "newrelic": "1.26.x",
-    "requestretry": "1.6.x"
+    "newrelic": "1.27.x",
+    "requestretry": "1.7.x"
   },
   "engines": {
-    "node": "6.0.x"
+    "node": "6.1.x"
   }
 }
