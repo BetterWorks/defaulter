@@ -16,6 +16,6 @@
     "requestretry": "1.9.x"
   },
   "engines": {
-    "node": "6.1.x"
+    "node": "6.2.x"
   }
 }
