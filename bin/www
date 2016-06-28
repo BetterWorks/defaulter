@@ -23,7 +23,7 @@ cluster(function(worker) {
   var server = app.listen(port);
   var numRequests = 0;
   var closing = false;
-  var limit = 200 + Math.round(Math.random() * 100);
+  var limit = 1000 + Math.round(Math.random() * 100);
   server.on('request', function(req, res) {
     numRequests += 1;
     if (!closing && numRequests === limit) {
