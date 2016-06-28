@@ -19,7 +19,23 @@ var port = normalizePort(process.env.PORT || '3000');
 
 cluster(function(worker) {
   console.info('worker #' + worker.id + ' started on port ' + port);
-  return require('../app').listen(port);
+  var app = require('../app');
+  var server = app.listen(port);
+  var numRequests = 0;
+  var closing = false;
+  var limit = 200 + Math.round(Math.random() * 100);
+  server.on('request', function(req, res) {
+    numRequests += 1;
+    if (!closing && numRequests === limit) {
+      closing = true;
+      server.close(function() {
+        process.nextTick(function() {
+          process.exit();
+        });
+      });
+    }
+  });
+  return server;
 }, {count: 4, verbose: true});
 
 /**
