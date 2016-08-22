@@ -8,12 +8,12 @@
   },
   "dependencies": {
     "canvas": "1.4.x",
-    "express": "4.14.x",
-    "express-cluster": "0.0.x",
+    "express": "^4.14.0",
     "hbs": "4.0.x",
     "morgan": "1.7.x",
     "newrelic": "1.29.x",
-    "requestretry": "1.10.x"
+    "requestretry": "1.10.x",
+    "throng": "^4.0.0"
   },
   "engines": {
     "node": "6.4.x"

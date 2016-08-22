@@ -24,9 +24,13 @@ router.get('/', function(req, res) {
 
     var type = response.headers['content-type'] || '';
 
-    if (response.statusCode >= 400 || type.indexOf('image') === -1) {
-      res.status(response.statusCode);
-      res.send(body);
+    if (response.statusCode >= 400) {
+      res.status(400).send('src returned HTTP ' + res.statusCode);
+      return;
+    }
+
+    if (type.indexOf('image') === -1) {
+      res.status(400).send('src did not return an image. Got ' + type);
       return;
     }
 
@@ -69,8 +73,7 @@ router.get('/', function(req, res) {
     };
 
     img.onerror = function () {
-      res.status(500);
-      res.send('Unable to read image');
+      res.status(500).send('Unable to read image');
     };
 
     img.src = new Buffer(body, 'binary');
