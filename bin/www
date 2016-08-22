@@ -1,59 +1,19 @@
 #!/usr/bin/env node
 'use strict';
 
-/**
- * Module dependencies.
- */
+const throng = require('throng');
 
-var cluster = require('express-cluster');
+const PORT = process.env.PORT || 3000;
+const WORKERS = process.env.WEB_CONCURRENCY || 1;
 
-/**
- * Get port from environment and store in Express.
- */
+ throng({
+   workers: WORKERS,
+   start: startWorker
+ });
 
-var port = normalizePort(process.env.PORT || '3000');
 
-/**
- * Create HTTP server.
- */
-
-cluster(function(worker) {
-  console.info('worker #' + worker.id + ' started on port ' + port);
+function startWorker(id) {
+  console.info('Worker #' + id + ' starting on port ' + PORT);
   var app = require('../app');
-  var server = app.listen(port);
-  var numRequests = 0;
-  var closing = false;
-  var limit = 200 + Math.round(Math.random() * 100);
-  server.on('request', function(req, res) {
-    numRequests += 1;
-    if (!closing && numRequests === limit) {
-      closing = true;
-      server.close(function() {
-        process.nextTick(function() {
-          process.exit();
-        });
-      });
-    }
-  });
-  return server;
-}, {count: 4, verbose: true});
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val) {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
+  app.listen(PORT);
 }
