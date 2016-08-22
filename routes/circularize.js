@@ -60,7 +60,7 @@ router.get('/', function(req, res) {
         }
         res.send(buf);
 
-        // workaround leak https://github.com/Automattic/node-canvas/issues/785
+        // leak workaround https://github.com/Automattic/node-canvas/issues/785
         img.onload = null;
         img.onerror = null;
         img.src = null;
