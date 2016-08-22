@@ -53,7 +53,19 @@ router.get('/', function(req, res) {
       res.setHeader('content-type', 'image/png');
       res.setHeader('cache-control', 'max-age=86400');
 
-      canvas.pngStream().pipe(res);
+      canvas.toBuffer(function (err, buf) {
+        if (err) {
+          res.status(500).send('Unable to read image');
+          return;
+        }
+        res.send(buf);
+
+        // leak workaround https://github.com/Automattic/node-canvas/issues/785
+        img.onload = null;
+        img.onerror = null;
+        img.src = null;
+      });
+
     };
 
     img.onerror = function () {
