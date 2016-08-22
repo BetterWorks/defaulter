@@ -3,7 +3,6 @@
 var Canvas = require('canvas');
 var crypto = require('crypto');
 var express = require('express');
-var path = require('path');
 
 var router = express.Router();
 
