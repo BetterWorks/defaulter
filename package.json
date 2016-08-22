@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "jshint routes/*.js"
+    "test": "jshint app.js routes/*.js"
   },
   "dependencies": {
     "canvas": "1.4.x",
@@ -17,5 +17,8 @@
   },
   "engines": {
     "node": "6.4.x"
+  },
+  "devDependencies": {
+    "jshint": "2.9.x"
   }
 }

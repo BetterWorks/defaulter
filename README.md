@@ -1,6 +1,8 @@
 # defaulter [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 default profile image generator using up to two initial characters from a text
 
+[![Build Status](https://travis-ci.org/BetterWorks/defaulter.svg?branch=master)](https://travis-ci.org/BetterWorks/defaulter)
+
 [read about why we built this](https://engineering.betterworks.com/2015/09/16/on-the-fly-profile-picture/)
 or
 [try it out live](https://defaulter.betterworks.com/?text=DF)
