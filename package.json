@@ -7,16 +7,16 @@
     "test": "jshint app.js routes/*.js"
   },
   "dependencies": {
-    "canvas": "1.6.2",
-    "express": "^4.14.0",
+    "canvas": "1.6.4",
+    "express": "^4.14.1",
     "hbs": "4.0.x",
-    "morgan": "1.7.x",
-    "newrelic": "1.35.x",
+    "morgan": "1.8.x",
+    "newrelic": "1.37.x",
     "requestretry": "1.12.x",
     "throng": "^4.0.0"
   },
   "engines": {
-    "node": "6.9.x"
+    "node": "6.10.x"
   },
   "devDependencies": {
     "jshint": "2.9.x"
