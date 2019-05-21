@@ -1,6 +1,6 @@
 'use strict';
 
-var Canvas = require('canvas');
+var { createCanvas, Canvas } = require('canvas');
 var crypto = require('crypto');
 var express = require('express');
 
@@ -55,7 +55,7 @@ router.get('/', function(req, res) {
     backgroundColor = tempColor;
   }
 
-  var canvas = new Canvas(size, size);
+  var canvas = createCanvas(size, size);
   var ctx = canvas.getContext('2d');
 
   // fill the background

@@ -7,7 +7,7 @@
     "test": "jshint app.js routes/*.js"
   },
   "dependencies": {
-    "canvas": "1.6.4",
+    "canvas": "2.5.0",
     "express": "^4.14.1",
     "hbs": "4.0.x",
     "morgan": "1.8.x",
