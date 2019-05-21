@@ -1,6 +1,6 @@
 'use strict';
 
-var Canvas = require('canvas');
+var { createCanvas, Canvas } = require('canvas');
 var express = require('express');
 
 var router = express.Router();
@@ -34,7 +34,7 @@ router.get('/', function(req, res) {
   var color = colors[req.query.color || 'green'];
   var arcRadius = (size - 1) * 0.5;
 
-  var canvas = new Canvas(size, size);
+  var canvas = createCanvas(size, size);
   var ctx = canvas.getContext('2d');
 
   // fill the background

@@ -1,9 +1,8 @@
 'use strict';
 
-var Canvas = require('canvas');
+var { createCanvas, Canvas, Image } = require('canvas');
 var express = require('express');
 var request = require('requestretry');
-var Image = Canvas.Image;
 
 var router = express.Router();
 
@@ -41,7 +40,7 @@ router.get('/', function(req, res) {
       var middleY = Math.round((img.height - 1) * 0.5);
       var radius = Math.min(middleX, middleY);
 
-      var canvas = new Canvas(img.width, img.height);
+      var canvas = createCanvas(img.width, img.height);
       var ctx = canvas.getContext('2d');
 
       ctx.drawImage(img, 0, 0, img.width, img.height);
