@@ -1,0 +1,14 @@
+version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@6.1.0
+
+workflows:
+  build:
+    jobs:
+      # only tag latest on master branch following a green build
+      - aws-ecr/build-and-push-image:
+          repo: $STAGE
+          filters:
+            branches:
+              only: master
+
