@@ -2,13 +2,29 @@ version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@6.1.0
 
+jobs:
+  build-and-push-image:
+    executor: aws-ecr/default
+    steps:
+      - checkout
+      - aws-ecr/ecr-login
+      - aws-ecr/build-image:
+          repo: $STAGE
+      - run: |
+          docker tag \
+          $AWS_ECR_ACCOUNT_URL/$STAGE:latest \
+          $AWS_ECR_ACCOUNT_URL/$STAGE:$CIRCLE_SHA1
+      - aws-ecr/push-image:
+          repo: $STAGE
+      - aws-ecr/push-image:
+          repo: $STAGE
+          tag: $CIRCLE_SHA1
+
 workflows:
   build:
     jobs:
-      # only tag latest on master branch following a green build
-      - aws-ecr/build-and-push-image:
-          repo: $STAGE
+      # only tag master branch
+      - build-and-push-image:
           filters:
             branches:
               only: master
-
