@@ -11,7 +11,7 @@
     "express": "^4.14.1",
     "hbs": "4.0.x",
     "morgan": "1.8.x",
-    "newrelic": "1.37.x",
+    "newrelic": "4.7.x",
     "requestretry": "1.12.x",
     "throng": "^4.0.0"
   },
