@@ -1,0 +1,55 @@
+name: release-build
+
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  # release:
+  #   types: [published]
+
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.6.0
+        with:
+          access_token: ${{ github.token }}
+      - name: Get release tag
+        id: get-tag
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Get All Changed Files
+        id: files
+        uses: lots0logs/gh-action-get-changed-files@2.1.4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+        # checkout the private repo containing the action to run
+      - name: Get Common Action Repo
+        uses: actions/checkout@v2
+        with:
+          repository: Betterworks/common-actions
+          ref: '0.1.1'
+          token: ${{ secrets.REPO_TOKEN }} # stored in GitHub secrets
+          path: .github/actions/common-actions
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.ECR_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.ECR_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      - name: Build docker container
+        uses: ./.github/actions/common-actions/build-container
+      - name: Push container to ecr
+        uses: ./.github/actions/common-actions/push-to-ecr
+        with:
+          repo-name: defaulter
+          image-tags: latest,${{ steps.get-tag.outputs.tag }}
+          ecr-registry: ${{ steps.login-ecr.outputs.registry }}
