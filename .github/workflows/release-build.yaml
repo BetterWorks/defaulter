@@ -33,7 +33,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: Betterworks/common-actions
-          ref: '0.1.1'
+          ref: '0.1.5'
           token: ${{ secrets.REPO_TOKEN }} # stored in GitHub secrets
           path: .github/actions/common-actions
       - name: Configure AWS credentials
@@ -45,8 +45,16 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-      - name: Build docker container
+      - name: Pull container if exists
+        uses: ./.github/actions/common-actions/pull-container
+        id: container-pull
+        with:
+          container-name: "381963057307.dkr.ecr.us-east-1.amazonaws.com/defaulter:${{ github.sha }}"
+      - name: Build container if it doesn't exists
         uses: ./.github/actions/common-actions/build-container
+        if: steps.container-pull.outputs.successful == 'false'
+        with:
+          container-name: "381963057307.dkr.ecr.us-east-1.amazonaws.com/defaulter:${{ github.sha }}"
       - name: Push container to ecr
         uses: ./.github/actions/common-actions/push-to-ecr
         with:
